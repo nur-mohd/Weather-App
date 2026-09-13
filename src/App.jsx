@@ -1,11 +1,28 @@
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:<Home/>,
+  },
+  {
+    path: "/about-us",
+    element: <AboutUs/>
+  }
+]);
+
+
+
+function Router() {
 
   return (
     <>
-       <h1 className="text-blue-700 font-bold text-2xl">Nur Mohammad</h1>
+       <RouterProvider router={router} />
     </>
   )
 }
 
-export default App
+export default Router
