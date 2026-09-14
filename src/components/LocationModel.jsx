@@ -39,14 +39,18 @@ const LocationModel = ({ onClose }) => {
     } 
 
     const handleGetLocation = () => {
+      if(!navigator.geolocation){
+        setError("Geolocation is not supported by your browser")
+        return;
+      }
+
       navigator.geolocation.getCurrentPosition((position)=> {
+
         const {latitude, longitude} = position.coords
-        // console.log({latitude, longitude});
         goToPage({name: "Your Location", latitude: latitude, longitude: longitude})
         
       }, (error)=> {
-          // console.log(error)
-          setError(error)
+          setError(error.message)
       }, {
          timeout: 10000
       })
