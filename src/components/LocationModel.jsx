@@ -10,6 +10,18 @@ const LocationModel = ({ onClose }) => {
         console.log(value);
     } 
 
+    const handleGetLocation = () => {
+      navigator.geolocation.getCurrentPosition((position)=> {
+        const {latitude, longitude} = position.coords
+        console.log({latitude, longitude});
+        
+      }, (error)=> {
+          console.log(error)
+      }, {
+         timeout: 10000
+      })
+    }
+
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-gray-950/60">
       <div className="h-[300px] w-[400px] bg-gray-100 shadow-2xl rounded-2xl">
@@ -44,6 +56,7 @@ const LocationModel = ({ onClose }) => {
         <div className="py-1.5 text-center">Or</div>
         <div className="flex justify-center">
               <button
+                onClick={handleGetLocation}
                 type="button"
                 className="bg-blue-500 text-white font-bold py-2 px-4 rounded-2xl hover:scale-105 transition-all delay-300 cursor-pointer"
               >
