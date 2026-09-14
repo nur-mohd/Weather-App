@@ -1,13 +1,22 @@
 import { X } from "lucide-react";
 import { useState } from "react";
+import { Getgeolocation } from "../services/get-geolocation";
 
 const LocationModel = ({ onClose }) => {
 
     const [city, setCity] = useState("")
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
         const value = city.trim()
-        console.log(value);
+        // console.log(value);
+        try{
+            const result =await Getgeolocation(value);
+            console.log(result);
+
+        }
+        catch (error) {
+            console.log(error)
+        }
     } 
 
     const handleGetLocation = () => {
