@@ -181,7 +181,7 @@ const WMO_CODES = {
 export const getWeather = async (place) => {
     //  console.log("Place:", place);
 
-    const {latitude, longitude, name} = place;
+    const {latitude, longitude} = place;
 
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,is_day,rain,precipitation,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,snowfall`;
 
@@ -204,6 +204,7 @@ export const getWeather = async (place) => {
         temperature: Math.round(now.temperature_2m),
         humidity: now.relative_humidity_2m,
         windSpeed: now.wind_speed_10m,
+        precipitation: now.precipitation,
         feelsLike: Math.round(now.apparent_temperature),
         condition: weather.condition,
         description: weather.description,
