@@ -28,10 +28,74 @@ const Weather = () => {
     fetchWeather();
   }, [place]);
 
+  const Rain = ["rain", "drizzle", "freezing_rain", "showers"];
+
+  const getRecommendations = (weather) => {
+    if (!weather) {
+      return null;
+    }
+
+    if (weather.condition === "snow") {
+      return {
+        type: "snow",
+        label: "Snow",
+        text: "It's snowing outside, wear warm clothes and boots.",
+      };
+    }
+
+    if (Rain.includes(weather.condition)) {
+      return {
+        type: "rain",
+        label: "Rain",
+        text: "It's raining outside, carry an umbrella or raincoat.",
+      };
+    }
+
+    if (weather.condition === "thunderstorm") {
+      return {
+        type: "thunderstorm",
+        label: "Thunderstorm",
+        text: "Thunderstorms are expected, stay indoors and avoid open areas.",
+      };
+    }
+
+    if (weather.condition === "fog") {
+      return {
+        type: "fog",
+        label: "Fog",
+        text: "Visibility may be low, drive carefully and use your headlights.",
+      };
+    }
+
+    if (["clear", "partly_cloudy", "cloudy"].includes(weather.condition)) {
+      return {
+        type: "general",
+        label: "Mild Weather",
+        text: "The weather looks comfortable today. Enjoy your day outdoors.",
+      };
+    }
+
+    return {
+      type: "general",
+      label: "Weather Update",
+      text: "Check the latest weather conditions before heading out.",
+    };
+  };
+
+  const recommendation = getRecommendations(weather);
+  const recommendationColors = {
+    snow: "text-sky-600",
+    rain: "text-blue-600",
+    thunderstorm: "text-purple-700",
+    fog: "text-slate-600",
+    general: "text-green-600",
+  };
+
   return (
     <div>
       <div className="grid md:grid-cols-2 gap-4 p-4">
-        <div className="bg-white shadow-2xl rounded-2xl p-4">
+        <div className="space-y-3">
+            <div className="bg-white shadow-2xl rounded-2xl p-4">
           <div className="space-y-3">
             <h1 className="text-4xl text-blue-500 font-semibold ">
               Today's Weather details
@@ -77,6 +141,19 @@ const Weather = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="bg-white shadow-2xl rounded-2xl p-4">
+            <h2 className="text-blue-950 font-bold text-2xl">
+              Smart Recommendations
+            </h2>
+            <div
+              className={`mt-2 font-semibold ${
+                recommendationColors[recommendation?.type] || "text-gray-600"
+              }`}
+            >
+              {recommendation?.text || "Loading recommendation..."}
+            </div>
+        </div>
         </div>
 
         <div className="bg-white shadow-2xl rounded-2xl p-4 flex flex-col items-center justify-center">
