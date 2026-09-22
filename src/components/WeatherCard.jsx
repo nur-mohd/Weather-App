@@ -17,7 +17,7 @@ const WeatherCard = ({ weather, place }) => {
 
   return (
     <section
-      className="relative overflow-hidden rounded-3xl p-6 shadow-xl ring-1 ring-black/5"
+      className="relative overflow-hidden rounded-[28px] p-6 shadow-xl ring-1 ring-black/5"
       style={{ background: theme.sky }}
     >
       <span
@@ -27,7 +27,7 @@ const WeatherCard = ({ weather, place }) => {
       />
 
       <div className="relative">
-        <div className="mb-4 flex items-center justify-between gap-3">
+        <div className="mb-5 flex items-center justify-between gap-3">
           <span
             className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]"
             style={{ background: theme.chip, color: theme.ink }}
@@ -63,7 +63,7 @@ const WeatherCard = ({ weather, place }) => {
           {stats.map(({ icon: Icon, label, value }) => (
             <div
               key={label}
-              className="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/50 p-3 shadow-sm backdrop-blur-sm"
+              className="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/50 p-3 shadow-sm shadow-slate-200/60 backdrop-blur-sm"
             >
               <span
                 className="flex h-10 w-10 items-center justify-center rounded-xl"
