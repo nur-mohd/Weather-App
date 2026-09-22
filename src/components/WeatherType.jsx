@@ -1,4 +1,4 @@
-import { Clock, Thermometer } from "lucide-react";
+import { Thermometer } from "lucide-react";
 import WeatherLottie from "./WeatherLottie";
 import { getWeatherTheme } from "../utils/getTheme";
 
@@ -24,7 +24,7 @@ const WeatherType = ({ weather, place }) => {
       />
 
       <div className="relative flex flex-col items-center text-center">
-        <span className="pill self-start" style={{ background: theme.chip, color: theme.ink }}>
+        <span className="pill rounded-xl p-1 self-start" style={{ background: theme.chip, color: theme.ink }}>
           <span className="h-1.75 w-1.75 rounded-full bg-current animate-pulse" />
           Live in {place?.name || "your area"}
         </span>
