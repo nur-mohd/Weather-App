@@ -52,26 +52,29 @@ const Weather = () => {
   }, [place]);
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#eff6ff_0%,_#dbeafe_30%,_#f8fafc_70%)] px-4 py-6 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#f0f9ff_0%,_#e0f2fe_18%,_#f8fafc_52%,_#eff6ff_100%)] px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <header className="mb-6">
           {!loading && (
-            <div className="flex items-center justify-between gap-4 rounded-[28px] border border-white/70 bg-white/70 px-4 py-3 shadow-lg shadow-sky-100/60 backdrop-blur-sm sm:px-5">
+            <div className="flex items-center justify-between gap-4 rounded-[30px] border border-white/80 bg-white/75 px-4 py-3 shadow-[0_16px_40px_-22px_rgba(14,116,144,0.55)] backdrop-blur-md sm:px-5">
               <Link
-                className="inline-flex items-center rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-sky-500"
+                className="inline-flex items-center rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-sky-500"
                 to="/"
               >
                 Back To Home
               </Link>
 
-              <h1 className="text-center text-lg font-bold tracking-[0.12em] text-sky-600 sm:text-xl">
-                WEATHER APP
-              </h1>
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-sky-500 shadow-[0_0_18px_rgba(14,165,233,0.9)]" />
+                <h1 className="text-center text-lg font-black tracking-[0.18em] text-sky-700 sm:text-xl">
+                  WEATHER APP
+                </h1>
+              </div>
 
               <button
                 onClick={() => setOpen(true)}
                 type="button"
-                className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700 transition hover:-translate-y-0.5 hover:bg-sky-100"
+                className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700 transition duration-200 hover:-translate-y-0.5 hover:bg-sky-100"
               >
                 Change location
               </button>
@@ -82,9 +85,9 @@ const Weather = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="grid gap-5 p-1 md:grid-cols-2">
+          <div className="grid gap-6 p-1 md:grid-cols-[1.08fr_0.92fr]">
             <div className="space-y-5">
-              <div className="rounded-[30px] bg-white/80 p-3 shadow-[0_20px_60px_-30px_rgba(14,116,144,0.5)] ring-1 ring-sky-100 backdrop-blur-sm">
+              <div className="rounded-[30px] bg-white/80 p-3 shadow-[0_25px_70px_-32px_rgba(14,116,144,0.7)] ring-1 ring-sky-100 backdrop-blur-sm">
                 <WeatherCard weather={weather} place={place} />
               </div>
 

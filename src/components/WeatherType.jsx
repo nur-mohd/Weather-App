@@ -10,7 +10,7 @@ const WeatherType = ({ weather, place }) => {
 
   return (
     <section
-      className="relative w-full overflow-hidden rounded-3xl px-7 py-8 shadow-lg ring-1 ring-inset ring-white/40 animate-rise max-[480px]:px-5 max-[480px]:py-6 [animation-delay:80ms]"
+      className="relative w-full overflow-hidden rounded-[32px] px-7 py-8 shadow-[0_28px_80px_-35px_rgba(15,23,42,0.52)] ring-1 ring-inset ring-white/40 animate-rise max-[480px]:px-5 max-[480px]:py-6 [animation-delay:80ms]"
       style={{ background: theme.sky }}
     >
       <span
@@ -24,8 +24,11 @@ const WeatherType = ({ weather, place }) => {
       />
 
       <div className="relative flex flex-col items-center text-center">
-        <span className="pill rounded-xl p-1 self-start" style={{ background: theme.chip, color: theme.ink }}>
-          <span className="h-1.75 w-1.75 rounded-full bg-current animate-pulse" />
+        <span
+          className="self-start rounded-full border border-white/50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] shadow-sm"
+          style={{ background: theme.chip, color: theme.ink }}
+        >
+          <span className="mr-2 inline-block h-1.75 w-1.75 rounded-full bg-current align-middle animate-pulse" />
           Live in {place?.name || "your area"}
         </span>
 
@@ -36,12 +39,12 @@ const WeatherType = ({ weather, place }) => {
         />
 
         <h3
-          className="m-0 font-display text-[32px] font-bold leading-tight max-[480px]:text-[25px]"
+          className="m-0 font-display text-[32px] font-black leading-tight tracking-[-0.04em] max-[480px]:text-[25px]"
           style={{ color: theme.ink }}
         >
           {weather?.conditionLabel || "Weather"}
         </h3>
-        <p className="mb-5 mt-1 text-[15px] m-0" style={{ color: theme.inkSoft }}>
+        <p className="mb-5 mt-1 m-0 text-[15px]" style={{ color: theme.inkSoft }}>
           {weather?.description || "Loading weather details..."}
         </p>
 
@@ -50,8 +53,6 @@ const WeatherType = ({ weather, place }) => {
             <Thermometer size={15} strokeWidth={2.5} />
             Feels like {weather?.feelsLike ?? 0}°C
           </span>
-
-          
         </div>
       </div>
     </section>

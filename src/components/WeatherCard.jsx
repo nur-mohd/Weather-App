@@ -17,7 +17,7 @@ const WeatherCard = ({ weather, place }) => {
 
   return (
     <section
-      className="relative overflow-hidden rounded-[28px] p-6 shadow-xl ring-1 ring-black/5"
+      className="relative overflow-hidden rounded-[30px] p-6 shadow-[0_24px_60px_-24px_rgba(15,23,42,0.28)] ring-1 ring-black/5"
       style={{ background: theme.sky }}
     >
       <span
@@ -25,11 +25,12 @@ const WeatherCard = ({ weather, place }) => {
         style={{ background: theme.accent, opacity: 0.18 }}
         aria-hidden="true"
       />
+      <span className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white/10 to-transparent" aria-hidden="true" />
 
       <div className="relative">
         <div className="mb-5 flex items-center justify-between gap-3">
           <span
-            className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]"
+            className="rounded-full border border-white/50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] shadow-sm"
             style={{ background: theme.chip, color: theme.ink }}
           >
             Today&apos;s weather
@@ -37,20 +38,20 @@ const WeatherCard = ({ weather, place }) => {
         </div>
 
         <div className="flex items-center gap-2 text-slate-800">
-          <MapPin size={20} strokeWidth={2.5} />
-          <h2 className="text-2xl font-semibold" style={{ color: theme.ink }}>
+          <MapPin size={20} strokeWidth={2.5} className="opacity-80" />
+          <h2 className="text-2xl font-semibold tracking-tight" style={{ color: theme.ink }}>
             {locationName}
           </h2>
         </div>
 
         <div className="mt-6 flex items-end gap-4 max-[480px]:flex-col max-[480px]:items-start">
-          <div className="text-5xl font-extrabold leading-none" style={{ color: theme.strong }}>
+          <div className="text-5xl font-black leading-none tracking-[-0.06em]" style={{ color: theme.strong }}>
             {weather.temperature ?? 0}
             <span className="text-3xl align-top">°</span>
           </div>
 
           <div>
-            <p className="text-lg font-bold" style={{ color: theme.ink }}>
+            <p className="text-lg font-bold tracking-tight" style={{ color: theme.ink }}>
               {weather.conditionLabel || weather.description}
             </p>
             <p className="text-sm" style={{ color: theme.inkSoft }}>
@@ -63,7 +64,7 @@ const WeatherCard = ({ weather, place }) => {
           {stats.map(({ icon: Icon, label, value }) => (
             <div
               key={label}
-              className="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/50 p-3 shadow-sm shadow-slate-200/60 backdrop-blur-sm"
+              className="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/55 p-3 shadow-[0_12px_28px_-20px_rgba(15,23,42,0.6)] backdrop-blur-sm"
             >
               <span
                 className="flex h-10 w-10 items-center justify-center rounded-xl"
