@@ -1,6 +1,7 @@
 
 const THEMES = {
   clear: {
+    animation: "clear",
     sky: "linear-gradient(160deg, #fff8e1 0%, #ffe6a8 55%, #ffd486 100%)",
     accent: "#f59e0b",
     strong: "#d97706",
@@ -10,6 +11,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.72)",
   },
   clear_night: {
+    animation: "clear_night",
     sky: "linear-gradient(160deg, #1b2551 0%, #2b3a75 55%, #3e4f95 100%)",
     accent: "#c7d2fe",
     strong: "#4f46e5",
@@ -19,6 +21,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.16)",
   },
   partly_cloudy: {
+    animation: "partly_cloudy",
     sky: "linear-gradient(160deg, #eaf4ff 0%, #cfe4ff 55%, #b6d5fb 100%)",
     accent: "#f59e0b",
     strong: "#d97706",
@@ -28,6 +31,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.75)",
   },
   cloudy: {
+    animation: "cloudy",
     sky: "linear-gradient(160deg, #f4f7fb 0%, #dde5f0 55%, #ccd7e6 100%)",
     accent: "#5b6b85",
     strong: "#475569",
@@ -37,6 +41,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.8)",
   },
   fog: {
+    animation: "fog",
     sky: "linear-gradient(160deg, #f5f8fb 0%, #e0e7ef 55%, #cbd5e1 100%)",
     accent: "#94a3b8",
     strong: "#64748b",
@@ -46,6 +51,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.8)",
   },
   rain: {
+    animation: "rain",
     sky: "linear-gradient(160deg, #eef6ff 0%, #c7e0fb 55%, #a3caf7 100%)",
     accent: "#3b82f6",
     strong: "#2563eb",
@@ -55,6 +61,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.75)",
   },
   snow: {
+    animation: "snow",
     sky: "linear-gradient(160deg, #f4fbff 0%, #dcf0fd 55%, #bfe4fb 100%)",
     accent: "#38bdf8",
     strong: "#0284c7",
@@ -64,6 +71,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.8)",
   },
   storm: {
+    animation: "storm",
     sky: "linear-gradient(160deg, #eef0ff 0%, #d2d7f8 55%, #b4bcf2 100%)",
     accent: "#6366f1",
     strong: "#4f46e5",
@@ -73,6 +81,7 @@ const THEMES = {
     chip: "rgba(255, 255, 255, 0.72)",
   },
   unknown: {
+    animation: "clear",
     sky: "linear-gradient(160deg, #f4f7fb 0%, #dde5f0 55%, #ccd7e6 100%)",
     accent: "#64748b",
     strong: "#475569",
@@ -83,4 +92,7 @@ const THEMES = {
   },
 };
 
-export const getWeatherTheme = (icon) => THEMES[icon] || THEMES.unknown;
+export const getWeatherTheme = (icon) => {
+  const key = icon || "unknown";
+  return THEMES[key] || THEMES.unknown;
+};
