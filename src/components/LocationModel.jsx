@@ -24,17 +24,16 @@ const LocationModel = ({ onClose }) => {
             return;
         }
         try{
-            const location =await Getgeolocation(value);
-            //console.log(result);
+            const location = await Getgeolocation(value);
             if(!location){
-                setError("Geocoding request failed!")
+                setError("Geocoding request failed!");
+                return;
             }
-            goToPage(location)
+            goToPage(location);
 
         }
         catch (error) {
-            // console.log(error)
-            setError(error)
+            setError(error?.message || "Something went wrong while fetching the location.");
         }
     } 
 
@@ -58,7 +57,7 @@ const LocationModel = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-gray-950/60">
-      <div className="h-[300px] w-[400px] bg-gray-100 shadow-2xl rounded-2xl">
+      <div className="h-75 w-100 bg-gray-100 shadow-2xl rounded-2xl">
         <div className="flex justify-between items-center">
           <h2 className="text-xl p-5 font-semibold text-gray-700">
             Where are you today?
