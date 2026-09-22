@@ -4,13 +4,21 @@ import { useState, useEffect } from "react";
 import WeatherCard from "../components/WeatherCard";
 import RecommendationCard from "../components/RecommendationCard";
 import WeatherType from "../components/WeatherType";
+import { getRecommendations } from "../utils/getRecommendation";
 
 const Weather = () => {
   const value = useLocation();
   const place = value.state.location;
 
   const [weather, setWeather] = useState(null);
-  // console.log("Weather", weather);
+  const recommendation = getRecommendations(weather);
+  const recommendationColors = {
+    snow: "text-sky-600",
+    rain: "text-blue-600",
+    thunderstorm: "text-purple-700",
+    fog: "text-slate-600",
+    general: "text-green-600",
+  };
 
   useEffect(() => {
     if (!place) {
@@ -30,68 +38,6 @@ const Weather = () => {
     fetchWeather();
   }, [place]);
 
-  const Rain = ["rain", "drizzle", "freezing_rain", "showers"];
-
-  const getRecommendations = (weather) => {
-    if (!weather) {
-      return null;
-    }
-
-    if (weather.condition === "snow") {
-      return {
-        type: "snow",
-        label: "Snow",
-        text: "It's snowing outside, wear warm clothes and boots.",
-      };
-    }
-
-    if (Rain.includes(weather.condition)) {
-      return {
-        type: "rain",
-        label: "Rain",
-        text: "It's raining outside, carry an umbrella or raincoat.",
-      };
-    }
-
-    if (weather.condition === "thunderstorm") {
-      return {
-        type: "thunderstorm",
-        label: "Thunderstorm",
-        text: "Thunderstorms are expected, stay indoors and avoid open areas.",
-      };
-    }
-
-    if (weather.condition === "fog") {
-      return {
-        type: "fog",
-        label: "Fog",
-        text: "Visibility may be low, drive carefully and use your headlights.",
-      };
-    }
-
-    if (["clear", "partly_cloudy", "cloudy"].includes(weather.condition)) {
-      return {
-        type: "general",
-        label: "Mild Weather",
-        text: "The weather looks comfortable today. Enjoy your day outdoors.",
-      };
-    }
-
-    return {
-      type: "general",
-      label: "Weather Update",
-      text: "Check the latest weather conditions before heading out.",
-    };
-  };
-
-  const recommendation = getRecommendations(weather);
-  const recommendationColors = {
-    snow: "text-sky-600",
-    rain: "text-blue-600",
-    thunderstorm: "text-purple-700",
-    fog: "text-slate-600",
-    general: "text-green-600",
-  };
 
   return (
     <div>
@@ -105,7 +51,10 @@ const Weather = () => {
         </div>
 
           {/* Weather Recommendation */}
-          <RecommendationCard recommendation={recommendation} recommendationColors={recommendationColors} />
+          <RecommendationCard 
+          recommendation={recommendation} 
+          recommendationColors={recommendationColors}
+          />
         
         </div>
 
